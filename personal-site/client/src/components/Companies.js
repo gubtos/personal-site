@@ -48,19 +48,21 @@ export default class Companies extends React.Component {
     render(){
         return (
             <div>
-                <div style={{ marginTop: 10, padding: 10 }}>
+                <div style={{ marginTop: 30}}>
+                    <Grid container spacing={40} justify="center">
+                            <Grid item>
+                                <img src={logo} alt="logo" width="250px" />
+                            </Grid>
+                    </Grid>
+                </div>
+                <div style={{ marginTop: 30 }}>
                     <Grid container spacing={40} justify="center">
                         <Grid item>
-                        {/* <img 
-                            src={logo}
-                            alt="logo"
-                            height="87px"
-                            width="100px" /> */}
                             <CustomizedInputBase onChangeInput={this.handleChange}/>
                         </Grid>
                     </Grid>
                 </div>
-                <div style={{ marginTop: 10, padding: 10 }}>
+                <div style={{ marginTop: 30, padding: 10 }}>
                     <Grid container spacing={40} justify="center">
                         {this.state.searchedCompanies.map((companie, index) => 
                             <Grid item key={index}>
@@ -71,7 +73,7 @@ export default class Companies extends React.Component {
                                     categories={companie.categories}
                                     opportunities={companie.opportunities}
                                     cities={companie.cities}
-                                    fundation={companie.fundation}></MediaCard>
+                                    fundation={companie.fundation}/>
                             </Grid>
                         )}
                     
