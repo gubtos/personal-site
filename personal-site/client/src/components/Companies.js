@@ -35,7 +35,7 @@ export default class Companies extends React.Component {
                 let k4 = l.cities.filter(l4 =>{
                     return l4.toLowerCase().match(e);
                 });
-                if (k4.length > 0 || k2.length > 0 || k1 !== null){
+                if (k4.length > 0 || k3.length > 0 || k2.length > 0 || k1 !== null){
                     return true;
                 }
             });
