@@ -1,0 +1,33 @@
+{
+  "name": "personal-site",
+  "version": "1.0.0",
+  "description": "Personal site with blog",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gubtos/personal-site.git"
+  },
+  "keywords": [
+    "website",
+    "blog"
+  ],
+  "author": "Gustavo Okuyama",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gubtos/personal-site/issues"
+  },
+  "homepage": "https://github.com/gubtos/personal-site#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.16.4",
+    "mongodb": "^3.2.3"
+  },
+  "devDependencies": {
+    "@material-ui/core": "^3.9.3",
+    "nodemon": "^1.19.0"
+  }
+}

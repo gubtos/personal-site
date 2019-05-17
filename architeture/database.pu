@@ -1,0 +1,16 @@
+@startuml
+
+object company
+
+company : id : INTEGER
+company : name : VARCHAR
+company : description : VARCHAR
+company : site : VARCHAR
+company : site_jobs : VARCHAR
+company : image_url : VARCHAR
+company : city_id : INTEGER
+company : last_update : DATETIME
+company : categories : VARCHAR
+company : city : VARCHAR
+
+@enduml

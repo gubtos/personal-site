@@ -1,0 +1,39 @@
+@startuml
+
+object company
+
+company : id : INTEGER
+company : name : VARCHAR
+company : description : VARCHAR
+company : site : VARCHAR
+company : site_jobs : VARCHAR
+company : image_url : VARCHAR
+company : city_id : INTEGER
+company : last_update : DATETIME
+
+object categorie
+
+categorie : id : INTEGER
+categorie : name : VARCHAR
+
+object categorization
+
+categorization : companyID : INTEGER
+categorization : categorieID : INTEGER
+
+object city
+
+city : id : INTEGER
+city : name : VARCHAR
+
+object localization
+
+localization : cityID : INTEGER
+localization : companyID : INTEGER
+
+categorization }|--|| categorie
+company ||--|{ categorization
+company ||--|{ localization
+localization }|--|| city
+
+@enduml

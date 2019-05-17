@@ -1,0 +1,92 @@
+[{
+    "name": "Arquivei",
+    "description": "Ferramenta automática para consultar, armazenar e baixar Notas Fiscais Eletrônicas em XML e PDF (Danfe) em LOTE e muito mais.",
+    "cities": [
+        "São Carlos"
+    ],
+    "site": "https://arquivei.com.br/",
+    "jobsSite": "https://arquivei.com.br/vagas/",
+    "imageURL": "https://cdn-landing.arquivei.com.br/wp-content/themes/pure-arquivei/img/logo-white-small.png",
+    "categories": [
+        "startup",
+        "service",
+        "fiscal"
+    ],
+    "opportunities":[
+        "front-end",
+        "back-end",
+        "big-data",
+        "marketing"
+    ],
+    "fundation": 2013
+},
+{
+    "name": "Raccoon",
+    "description": "Agência de marketing digital que centra seus esforços em trazer ao cliente o maior retorno de seu investimento através de um serviço de alta qualidade.",
+    "cities": [
+        "São Carlos"
+    ],
+    "site": "https://raccoon.ag/",
+    "jobsSite": "https://raccoon.ag/trabalhe-conosco/",
+    "imageURL": "https://raccoon.ag/wp-content/themes/modern-raccoon/images/logo-black.png",
+    "categories": [
+        "startup",
+        "service",
+        "marketing"
+    ],
+    "opportunities":[
+        "front-end",
+        "back-end",
+        "comercial",
+        "marketing",
+        "design",
+        "social media",
+        "business inteligence"
+    ],
+    "fundation": 2013
+},
+{
+    "name": "Ifood",
+    "description": "Agência de marketing digital que centra seus esforços em trazer ao cliente o maior retorno de seu investimento através de um serviço de alta qualidade.",
+    "cities": [
+        "São Carlos"
+    ],
+    "site": "https://raccoon.ag/",
+    "jobsSite": "https://raccoon.ag/trabalhe-conosco/",
+    "imageURL": "https://raccoon.ag/wp-content/themes/modern-raccoon/images/logo-black.png",
+    "categories": [
+        "startup",
+        "service",
+        "marketing"
+    ],
+    "opportunities":[
+        "front-end",
+        "back-end",
+        "comercial",
+        "marketing",
+        "design",
+        "social media",
+        "business inteligence"
+    ],
+    "fundation": 2013
+},
+{
+    "name": "Brain4Care",
+    "description": "A brain4care é uma empresa brasileira de tecnologia médica responsável pelo desenvolvimento e a comercialização de um sistema inovador para o monitoramento da pressão intracraniana (PIC) de modo não invasivo. Seu método reduz significativamente os riscos, os custos e as complicações associadas a esse procedimento, indicado, por exemplo, em casos de trauma, hidrocefalia ou derrame.",
+    "cities": [
+        "São Carlos", "São Paulo"
+    ],
+    "site": "https://brain4.care/",
+    "jobsSite": "",
+    "imageURL": "https://brain4.care/wp-content/uploads/2019/04/logo_brain4care.png",
+    "categories": [
+        "medical technology"
+    ],
+    "opportunities":[
+        "engineer",
+        "physics",
+        "nursing"
+    ],
+    "fundation": 2009
+}
+]
