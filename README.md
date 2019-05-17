@@ -37,3 +37,7 @@ Run "npm start" inside personal-site folder.
 ## Authors
 
 * **Gustavo Okuyama** - *Software Development and Design* - [gubtos](https://github.com/gubtos)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](https://raw.githubusercontent.com/gubtos/personal-site/master/LICENSE) file for details
