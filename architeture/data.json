@@ -1,4 +1,24 @@
 [{
+    "name": "Softbox",
+    "description": "A 13 anos no mercado a Softbox foi constituída para atender as demandas de consultoria e realização de projetos de TI. Atualmente a empresa oferece produtos de alta tecnologia bem como consultoria e desenvolvimento de soluções de TI para grande empresas. Com atuação nacional, a Softbox está situada em Uberlândia/MG e São Paulo/SP. Foco nos resultados do cliente: atuamos em um processo em que o cliente é o centro da nossa estrutura e todos os profissionais trabalham em sinergia com o foco voltado para garantia dos resultados desejados.",
+    "cities": [
+        "São Carlos", "Uberlândia", "São Paulo"
+    ],
+    "site": "https://softbox.com.br/",
+    "jobsSite": "https://softbox.com.br/oportunidades/",
+    "imageURL": "https://https://softbox.com.br/oportunidades/logo-white-small.png",
+    "categories": [
+        "service",
+        "development"
+    ],
+    "opportunities":[
+        "front-end",
+        "back-end",
+        "big-data"
+    ],
+    "fundation": 2005
+},
+{
     "name": "Arquivei",
     "description": "Ferramenta automática para consultar, armazenar e baixar Notas Fiscais Eletrônicas em XML e PDF (Danfe) em LOTE e muito mais.",
     "cities": [
@@ -49,21 +69,21 @@
     "name": "Ifood",
     "description": "Agência de marketing digital que centra seus esforços em trazer ao cliente o maior retorno de seu investimento através de um serviço de alta qualidade.",
     "cities": [
-        "São Carlos"
+        "Campinas","São Carlos"
     ],
-    "site": "https://raccoon.ag/",
-    "jobsSite": "https://raccoon.ag/trabalhe-conosco/",
-    "imageURL": "https://raccoon.ag/wp-content/themes/modern-raccoon/images/logo-black.png",
+    "site": "https://www.ifood.com.br",
+    "jobsSite": "https://jobs.kenoby.com/ifood",
+    "imageURL": "https://www.ifood.com.br/logo-black.png",
     "categories": [
         "startup",
         "service",
-        "marketing"
+        "marketing",
+        "delivery",
+        "food"
     ],
     "opportunities":[
         "front-end",
         "back-end",
-        "comercial",
-        "marketing",
         "design",
         "social media",
         "business inteligence"

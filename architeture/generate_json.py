@@ -16,7 +16,7 @@ for x in range(0,15):
     random.shuffle(opportunities)
     random.shuffle(cities)
     x = {
-        "name" : name,
+        "name" : name.capitalize(),
         "description": ' '.join(lorem.text().split(" ")[:50]),
         "cities": cities[:2],
         "site": url,
