@@ -1,5 +1,6 @@
 Company = require('./models/company');
+User = require('./models/user');
 
 module.exports = {
-    Company,
-}
+    Company, User
+};

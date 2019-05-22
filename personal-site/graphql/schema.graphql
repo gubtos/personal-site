@@ -4,6 +4,8 @@ type Query {
 
 type Mutation{
     createCompany(name: String!, year: Int!, description: String): Company
+    createUser(name: String!, email: String!, password: String!): User
+    checkUser(email: String!, password: String!): Boolean
 }
 
 # Schema Types
@@ -12,4 +14,10 @@ type Company{
     name: String!
     year: Int!
     description: String
+}
+
+type User{
+    name: String!,
+    email: String!,
+    hash: String
 }
