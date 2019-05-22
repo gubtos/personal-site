@@ -1,27 +1,66 @@
-const express     = require('express');
-const MongoClient = require('mongodb').MongoClient;
-const bodyParser  = require('body-parser');
-const db          = require('./config/db');
+const graphQLServer = require('graphql-yoga');
+const mongoose = require('mongoose');
 
-const app = express();
+const dbconf = require('./config/db');
+const models = require('./db');
 
-const port = 8000;
+const resolvers = require('./graphql/resolvers');
+const permissions = require('./graphql/permissions');
+const cors = require('cors');
 
-app.use(bodyParser.urlencoded({ 
-    extended : true
-}));
-
-app.use(bodyParser.json());
-
-MongoClient.connect(db.url, { useNewUrlParser: true }, (err, database) =>{
-    if (err){
-        return console.log(err);
+const options = { 
+    port: process.env.PORT || 8000,
+    endpoint: "/graphql",
+    cors: {
+        credentials: true,
+        origin: ["http://localhost:8000"]
     }
+};
 
-    const database2 = database.db("site-api");
-    require('./routes')(app, database2);
-    app.listen(port, () => {
-        console.log('Started in port '+ port);
+const db = mongoose
+    .connect(
+        dbconf.url,
+        {
+            useCreateIndex: true,
+            useNewUrlParser: true
+        }
+    )
+    .then(() => console.log('MongoDB connected'))
+    .catch(err => console.log(err));
+
+const context = {
+    models,
+    db
+};
+
+getUser = (req) => {
+    const auth = req.request.get('Authorization');
+    if (auth == 'gu'){
+        return {
+                isAdmin: true
+        }
+    }else{
+        return {
+            unk:{
+                isAdmin: false
+            }
+        }
+    }
+}
+
+server = new graphQLServer.GraphQLServer({
+    typeDefs: `${__dirname}/graphql/schema.graphql`,
+    resolvers,
+    middlewares:[permissions],
+    context : req =>({
+        ...req,
+        user: getUser(req),
+        models,
+        db,
+    }),
+});
+
+server
+    .start(options, ({port}) => {
+        console.log(`Server is running on http://localhost:${port}`);
     });
-    
-})

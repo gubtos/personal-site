@@ -1,0 +1,15 @@
+type Query {
+    companies: [Company!]!
+}
+
+type Mutation{
+    createCompany(name: String!, year: Int!, description: String): Company
+}
+
+# Schema Types
+type Company{
+    id: String!,
+    name: String!
+    year: Int!
+    description: String
+}
