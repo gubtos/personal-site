@@ -1,4 +1,5 @@
 graphqlShield = require('graphql-shield');
+passport = require('./passport');
 
 const rule = graphqlShield.rule;
 const shield = graphqlShield.shield;
@@ -19,6 +20,7 @@ const permissions = shield ({
     },
     Mutation : {
         createCompany: and(isAdmin, isAuthenticated),
+        createUser: and(isAuthenticated),
     }
 });
 
