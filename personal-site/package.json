@@ -32,9 +32,12 @@
     "graphql-shield": "^5.3.5",
     "graphql-tools": "^4.0.4",
     "graphql-yoga": "^1.17.4",
+    "jsonwebtoken": "^8.5.1",
     "merge-graphql-schemas": "^1.5.8",
     "mongodb": "^3.2.3",
-    "mongoose": "^5.5.10"
+    "mongoose": "^5.5.10",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "@material-ui/core": "^3.9.3",

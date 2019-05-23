@@ -19,5 +19,4 @@ type Company{
 type User{
     name: String!,
     email: String!,
-    hash: String
 }
