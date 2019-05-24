@@ -7,11 +7,11 @@ const allow = graphqlShield.allow;
 const and = graphqlShield.and;
 
 const isAuthenticated = rule()(async (parent, args, context, info) => {
-    return context.user !== null;
+    return context.request.res.locals.user !== null;
 });
 
 const isAdmin = rule()(async (parent, args, context, info) =>{
-    return context.user.isAdmin === true;
+    return context.request.res.locals.user.isAdmin === true;
 });
 
 const permissions = shield ({

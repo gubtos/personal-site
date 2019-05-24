@@ -50,7 +50,7 @@ const server = new graphQLServer.GraphQLServer({
     typeDefs: `${__dirname}/graphql/schema.graphql`,
     resolvers,
     middlewares: [permissions],
-    context: req => ({
+    context: (req) => ({
         ...req,
         user: getUser(req),
         models,
@@ -61,11 +61,15 @@ const server = new graphQLServer.GraphQLServer({
 server.express.use(bodyParser.json());
 
 server.express.use((req, res, next) => {
-    passport.authenticate(['jwt','local'], { session: false }, (err, user, info) => {
+    if (req.url === '/login'){
+        return next();
+    }
+    passport.authenticate(['jwt'], { session: false }, (err, user, info) => {
         if (err) {
             return next(err);
         }
         if (user){
+            res.locals.user = user;
             return next();
         }
         return res.status(400).json({ error: 'Something Wrong' });

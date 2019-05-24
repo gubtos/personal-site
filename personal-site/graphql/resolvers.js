@@ -26,7 +26,6 @@ module.exports = {
                 const newUser = await models.User.create({name, email, isAdmin, password});
                 return newUser;
             }catch(e){
-                //console.log(e);
                 if (e.code === 11000){
                     throw new Error('Error: Email already used');
                 }
