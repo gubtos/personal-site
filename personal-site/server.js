@@ -9,7 +9,8 @@ const permissions = require('./graphql/permissions');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
-const passport = require('./graphql/passport');
+const auth = require('./graphql/auth')();
+const jwt = require('jsonwebtoken');
 
 const options = {
     port: process.env.PORT || 8000,
@@ -31,51 +32,45 @@ const db = mongoose
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.log(err));
 
-getUser = (req) => {
-    const auth = req.request.get('Authorization');
-    if (auth == 'gu') {
-        return {
-            isAdmin: true
-        }
-    } else {
-        return {
-            unk: {
-                isAdmin: false
-            }
-        }
+// Authentication in Apolo server
+// url: https://blog.apollographql.com/a-guide-to-authentication-in-graphql-e002a4039d1
+// url: https://www.apollographql.com/docs/apollo-server/features/authentication
+getUser = async (token) => {
+    try{
+        const user = jwt.verify(token, 'secret');
+        const usero = await models.User.findOne({_id: user.id},'-password -salt');
+        return usero;
     }
-}
+    catch (err){
+        return null;
+    }
+}    
 
 const server = new graphQLServer.GraphQLServer({
     typeDefs: `${__dirname}/graphql/schema.graphql`,
     resolvers,
     middlewares: [permissions],
-    context: (req) => ({
-        ...req,
-        user: getUser(req),
-        models,
-        db,
-    }),
+    context: async (req) => {
+        const tokenWithBearer = req.request.headers.authorization || '';
+        const token = tokenWithBearer.split(' ')[1];
+        const user = await getUser(token);
+        return {
+            req,
+            user,
+            models,
+            db,
+        }
+    },    
 });
+
+// see Apolo docs resolver
+// url: https://www.apollographql.com/docs/apollo-server/essentials/data
+(parent, _, context) => {
+    return context.user;
+}
 
 server.express.use(bodyParser.json());
 
-server.express.use((req, res, next) => {
-    if (req.url === '/login'){
-        return next();
-    }
-    passport.authenticate(['jwt'], { session: false }, (err, user, info) => {
-        if (err) {
-            return next(err);
-        }
-        if (user){
-            res.locals.user = user;
-            return next();
-        }
-        return res.status(400).json({ error: 'Something Wrong' });
-    })(req, res, next);    
-
-});
 
 server.express.post('/login', (req, res, next) => {
     const user = req.body;
@@ -95,23 +90,8 @@ server.express.post('/login', (req, res, next) => {
             },
         });
     }
-
-    return passport.authenticate('local', { session: false }, (err, passportUser, info) => {
-
-        if (err) {
-            return next(err);
-        }
-
-        if (passportUser) {
-            const user = passportUser;
-            user.token = passportUser.generateJWT();
-
-            return res.json({ user: user.toAuthJSON() });
-        }
-        return res.status(400).json({ error: 'Something Wrong' });
-    })(req, res, next);
-}
-);
+    auth.generateJWT(user.email, user.password, res);
+});
 
 server
     .start(options, ({ port }) => {

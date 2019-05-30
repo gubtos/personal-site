@@ -34,14 +34,23 @@ module.exports = {
                 }
             }
         },
-        checkUser : async(parent, {email, password}, {models}) =>{
+        loginUser : async(parent, {email, password}, {models}) =>{
             let checked = false;
             const user = await models.User.findOne({'email':email}, (err, obj)=>{
                 if(obj){
                     checked = obj.validatePassword(password);
                 }
             });
-            return checked;
-        }
+            if(!user){
+                throw new Error('Email not registered');
+            }
+            if(!user.validatePassword(password)){
+                throw new Error('Incorrect password');
+            }
+            return {
+                id: user._id,
+                token: user.generateJWT()
+            }
+    },
     }
 };

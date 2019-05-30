@@ -1,5 +1,5 @@
 graphqlShield = require('graphql-shield');
-passport = require('./passport');
+passport = require('./auth');
 
 const rule = graphqlShield.rule;
 const shield = graphqlShield.shield;
@@ -7,11 +7,11 @@ const allow = graphqlShield.allow;
 const and = graphqlShield.and;
 
 const isAuthenticated = rule()(async (parent, args, context, info) => {
-    return context.request.res.locals.user !== null;
+    return context.user !== null;
 });
 
 const isAdmin = rule()(async (parent, args, context, info) =>{
-    return context.request.res.locals.user.isAdmin === true;
+    return context.user.isAdmin === true;
 });
 
 const permissions = shield ({
@@ -20,7 +20,8 @@ const permissions = shield ({
     },
     Mutation : {
         createCompany: and(isAdmin, isAuthenticated),
-        createUser: and(isAuthenticated),
+        createUser: allow,
+        loginUser: allow,
     }
 });
 

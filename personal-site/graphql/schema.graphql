@@ -5,7 +5,7 @@ type Query {
 type Mutation{
     createCompany(name: String!, year: Int!, description: String): Company
     createUser(name: String!, email: String!, password: String!): User
-    checkUser(email: String!, password: String!): Boolean
+    loginUser(email: String!, password: String!): UserAuth
 }
 
 # Schema Types
@@ -17,6 +17,11 @@ type Company{
 }
 
 type User{
-    name: String!,
-    email: String!,
+    name: String!
+    email: String!
+}
+
+type UserAuth{
+    id: String!
+    token: String!
 }
