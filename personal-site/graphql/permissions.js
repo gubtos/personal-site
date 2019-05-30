@@ -1,5 +1,4 @@
 graphqlShield = require('graphql-shield');
-passport = require('./auth');
 
 const rule = graphqlShield.rule;
 const shield = graphqlShield.shield;

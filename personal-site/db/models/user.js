@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
+const params = require('../../config/jwt');
 
 const UserSchema = new mongoose.Schema({
     name: String,
@@ -34,8 +35,9 @@ UserSchema.methods.generateJWT = function(){
     return jwt.sign({
         email: this.email,
         id: this._id,
-        exp: Math.floor(Date.now() / 1000) + (60 * 60),
-    }, 'secret');
+    }, params.secret, {
+        expiresIn: params.expiration
+    });
 }
 
 UserSchema.methods.toAuthJSON = function(){

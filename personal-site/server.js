@@ -40,6 +40,7 @@ getUser = async (token) => {
         return usero;
     }
     catch (err){
+        console.log(err);
         return null;
     }
 }    
