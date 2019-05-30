@@ -90,6 +90,7 @@ server.express.post('/login', (req, res, next) => {
             },
         });
     }
+
     auth.generateJWT(user.email, user.password, res);
 });
 
