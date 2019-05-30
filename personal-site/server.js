@@ -7,9 +7,7 @@ const models = require('./db');
 const resolvers = require('./graphql/resolvers');
 const permissions = require('./graphql/permissions');
 const cors = require('cors');
-const bodyParser = require('body-parser');
 
-const auth = require('./graphql/auth')();
 const jwt = require('jsonwebtoken');
 
 const options = {
@@ -68,31 +66,6 @@ const server = new graphQLServer.GraphQLServer({
 (parent, _, context) => {
     return context.user;
 }
-
-server.express.use(bodyParser.json());
-
-
-server.express.post('/login', (req, res, next) => {
-    const user = req.body;
-
-    if (!user.email) {
-        return res.status(422).json({
-            errors: {
-                email: 'is required',
-            },
-        });
-    }
-
-    if (!user.password) {
-        return res.status(422).json({
-            errors: {
-                password: 'is required',
-            },
-        });
-    }
-
-    auth.generateJWT(user.email, user.password, res);
-});
 
 server
     .start(options, ({ port }) => {
